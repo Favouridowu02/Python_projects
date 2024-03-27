@@ -1,0 +1,61 @@
+import random
+
+choices = ('r', 'p', 's')
+cPoints = 0
+pPoints = 0
+
+def player():
+    ''' This function is used to get players choice
+    '''
+    global choices
+    symbol = input("Chose either rock, paper or scissors using thier initials").lower()
+    if symbol.lower() not in choices:
+        print('Please enter a valid option r, p, s')
+        return player()
+    else:
+        return symbol
+def computer():
+    ''' This function is used to get the computers choice
+    '''
+    return random.choice(choices)
+
+def game():
+    ''' This function is used to play a single round of game
+    '''
+
+    pChoice = player()
+    cChoice = computer()
+    print("The Computer Chose", cChoice)
+    print("You chose", pChoice)
+    if pChoice == cChoice:
+        print("It is a tie")
+
+    elif(pChoice == "r" and cChoice == "s") or 
+        (pChoice == "s" and cChoice == "p") or
+        (pChoice == "p" and cChoice == "r"):
+        
+        print("Oh no YOU WON me :(")
+        pPrint += 1
+    else:
+        print("Ye I won")
+        cPoints += 1
+    print("...><...")
+
+print("Welcome to the Rock Paper Scissors Game<>???")
+print("You will be playing against the computer")
+while True:
+    for i in range(5):
+        game()
+    compliments = ["Nice Game", "Clean Shot", "Nice Play", "God Job"]
+    print(random.choice(compliments), "!\nYour Score is:", pPoints, "\nMy Score is ", cPoints)
+    print()
+    play_again = int(input("Press 1 to continue\nPress 2 to reset the game and continue\nPress 3 to exit"))
+    if play_again == 1:
+        continue
+    elif play_again == 2:
+        pPoints = 0
+        cPoints = 0
+        continue
+    else:
+        break
+print("Bye, <Don't Stop Coding>:}")
